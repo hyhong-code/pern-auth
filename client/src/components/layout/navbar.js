@@ -5,7 +5,7 @@ const navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
-        <NavLink className="navbar-brand" axact to="#">
+        <NavLink className="navbar-brand" exact to="#">
           PERN AUTH
         </NavLink>
         <button
