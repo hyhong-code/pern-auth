@@ -1,7 +1,68 @@
-import React from "react";
+import React, { Fragment, useState } from "react";
 
 const Signup = () => {
-  return <h1>Signup</h1>;
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (evt) => {
+    setFormData({ ...formData, [evt.target.name]: evt.target.value });
+  };
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    console.log(formData);
+  };
+
+  const { name, email, password } = formData;
+
+  return (
+    <Fragment>
+      <div className="row">
+        <div className="col-md-6 offset-md-3">
+          <h1>Signup</h1>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                className="form-control"
+                onChange={handleChange}
+                name="name"
+                value={name}
+                id="name"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                className="form-control"
+                onChange={handleChange}
+                name="email"
+                value={email}
+                id="email"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                className="form-control"
+                onChange={handleChange}
+                name="password"
+                value={password}
+                id="password"
+              />
+            </div>
+            <input type="submit" className="btn btn-primary" value="Signup" />
+          </form>
+        </div>
+      </div>
+    </Fragment>
+  );
 };
 
 export default Signup;
