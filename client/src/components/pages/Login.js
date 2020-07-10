@@ -1,6 +1,9 @@
 import React, { Fragment, useState } from "react";
+import { connect } from "react-redux";
 
-const Login = () => {
+import { login } from "../../actions/authActions";
+
+const Login = ({ login }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -13,6 +16,7 @@ const Login = () => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log(formData);
+    login(formData);
   };
 
   const { email, password } = formData;
@@ -53,4 +57,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default connect(null, { login })(Login);
