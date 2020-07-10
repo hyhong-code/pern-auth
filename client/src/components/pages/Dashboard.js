@@ -1,15 +1,16 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 
-const Dashboard = ({ history, user }) => {
-  console.log(history);
+import Spinner from "../layout/Spinner";
+
+const Dashboard = ({ user }) => {
   return user ? (
     <Fragment>
       <h1>Dashboard</h1>
       <p className="lead">Hello, {user.user_name}</p>
     </Fragment>
   ) : (
-    <h1>Loading...</h1>
+    <Spinner />
   );
 };
 

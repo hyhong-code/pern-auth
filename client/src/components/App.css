@@ -1,0 +1,9 @@
+.loading-spinner {
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -2.5rem;
+  margin-top: -2.5rem;
+}

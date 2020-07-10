@@ -3,13 +3,14 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { loadMe } from "../actions/authActions";
-import Navbar from "./layout/navbar";
+import Navbar from "./layout/Navbar";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
+import "./App.css";
 
 const App = ({ loadMe }) => {
   useEffect(() => {
