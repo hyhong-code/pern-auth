@@ -5,6 +5,7 @@ import {
   SIGNUP_FAILED,
   USER_LOADED,
   AUTH_ERROR,
+  LOGOUT_USER,
 } from "../actions/actionTypes";
 import setTokenHeader from "../utils/setTokenHeader";
 
@@ -26,6 +27,7 @@ const authReducer = (state = INITIAL_STATE, action) => {
     case LOGIN_FAILED:
     case SIGNUP_FAILED:
     case AUTH_ERROR:
+    case LOGOUT_USER:
       localStorage.removeItem("jwt");
       setTokenHeader(null);
       return INITIAL_STATE;

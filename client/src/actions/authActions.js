@@ -7,8 +7,9 @@ import {
   SIGNUP_FAILED,
   USER_LOADED,
   AUTH_ERROR,
+  LOGOUT_USER,
 } from "../actions/actionTypes";
-import setTokenHeader from "./actionTypes";
+import setTokenHeader from "../utils/setTokenHeader";
 
 const config = {
   headers: {
@@ -24,6 +25,7 @@ export const signup = (formData) => async (dispatch) => {
       type: SIGNUP_SUCCESS,
       payload: res.data.token,
     });
+    dispatch(loadMe());
   } catch (error) {
     console.log(error.response);
     dispatch({
@@ -40,10 +42,34 @@ export const login = (formData) => async (dispatch) => {
       type: LOGIN_SUCCESS,
       payload: res.data.token,
     });
+    dispatch(loadMe());
   } catch (error) {
     console.log(error.response);
     dispatch({
       type: LOGIN_FAILED,
     });
   }
+};
+
+export const loadMe = () => async (dispatch) => {
+  setTokenHeader(localStorage.getItem("jwt"));
+  try {
+    const res = await axios.get("/auth/loadme");
+    dispatch({
+      type: USER_LOADED,
+      payload: res.data,
+    });
+    console.log(res.data);
+  } catch (error) {
+    console.log(error.response);
+    dispatch({
+      type: AUTH_ERROR,
+    });
+  }
+};
+
+export const logout = () => (dispatch) => {
+  dispatch({
+    type: LOGOUT_USER,
+  });
 };

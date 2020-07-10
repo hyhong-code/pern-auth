@@ -1,7 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 
-const navbar = () => {
+import { logout } from "../../actions/authActions.js";
+
+const navbar = ({ logout }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
@@ -41,6 +44,11 @@ const navbar = () => {
                 Dashboard
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" exact to="/" onClick={logout}>
+                Logout
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>
@@ -48,4 +56,4 @@ const navbar = () => {
   );
 };
 
-export default navbar;
+export default connect(null, { logout })(navbar);
