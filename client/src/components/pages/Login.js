@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { login } from "../../actions/authActions";
 
-const Login = ({ login }) => {
+const Login = ({ history, login }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -16,7 +16,7 @@ const Login = ({ login }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log(formData);
-    login(formData);
+    login(formData, history);
   };
 
   const { email, password } = formData;

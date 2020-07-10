@@ -17,7 +17,7 @@ const config = {
   },
 };
 
-export const signup = (formData) => async (dispatch) => {
+export const signup = (formData, history) => async (dispatch) => {
   try {
     const res = await axios.post("/auth/register", formData, config);
     console.log(res.data);
@@ -26,6 +26,7 @@ export const signup = (formData) => async (dispatch) => {
       payload: res.data.token,
     });
     dispatch(loadMe());
+    history.push("/dashboard");
   } catch (error) {
     console.log(error.response);
     dispatch({
@@ -34,7 +35,7 @@ export const signup = (formData) => async (dispatch) => {
   }
 };
 
-export const login = (formData) => async (dispatch) => {
+export const login = (formData, history) => async (dispatch) => {
   try {
     const res = await axios.post("/auth/login", formData, config);
     console.log(res.data);
@@ -43,6 +44,7 @@ export const login = (formData) => async (dispatch) => {
       payload: res.data.token,
     });
     dispatch(loadMe());
+    history.push("/dashboard");
   } catch (error) {
     console.log(error.response);
     dispatch({
