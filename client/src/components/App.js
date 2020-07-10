@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
 import { connect } from "react-redux";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { loadMe } from "../actions/authActions";
 import Navbar from "./layout/Navbar";
@@ -11,6 +13,8 @@ import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./routes/PrivateRoute";
 import PublicRoute from "./routes/PublicRoute";
 import "./App.css";
+
+toast.configure();
 
 const App = ({ loadMe }) => {
   useEffect(() => {

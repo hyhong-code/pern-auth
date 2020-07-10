@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 
 import {
   LOGIN_SUCCESS,
@@ -26,9 +27,11 @@ export const signup = (formData, history) => async (dispatch) => {
       payload: res.data.token,
     });
     dispatch(loadMe());
+    toast.success("Signup success!", { autoClose: 3000 });
     history.push("/dashboard");
   } catch (error) {
     console.log(error.response);
+    toast.error(error.response.data.error, { autoClose: 5000 });
     dispatch({
       type: SIGNUP_FAILED,
     });
@@ -43,9 +46,11 @@ export const login = (formData) => async (dispatch) => {
       type: LOGIN_SUCCESS,
       payload: res.data.token,
     });
+    toast.success("Login success!", { autoClose: 3000 });
     dispatch(loadMe());
   } catch (error) {
     console.log(error.response);
+    toast.error(error.response.data.error, { autoClose: 5000 });
     dispatch({
       type: LOGIN_FAILED,
     });
