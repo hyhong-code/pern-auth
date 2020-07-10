@@ -1,13 +1,18 @@
 import React, { Fragment } from "react";
+import { connect } from "react-redux";
 
-const Dashboard = ({ history }) => {
+const Dashboard = ({ history, user }) => {
   console.log(history);
-  return (
+  return user ? (
     <Fragment>
       <h1>Dashboard</h1>
-      <p className="lead">Hello, John Doe</p>
+      <p className="lead">Hello, {user.user_name}</p>
     </Fragment>
+  ) : (
+    <h1>Loading...</h1>
   );
 };
 
-export default Dashboard;
+const mapStateToProps = ({ auth: { user } }) => ({ user });
+
+export default connect(mapStateToProps)(Dashboard);
