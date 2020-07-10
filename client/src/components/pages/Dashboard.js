@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 
-const Dashboard = () => {
+const Dashboard = ({ history }) => {
+  console.log(history);
   return (
     <Fragment>
       <h1>Dashboard</h1>

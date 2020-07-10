@@ -35,7 +35,7 @@ export const signup = (formData, history) => async (dispatch) => {
   }
 };
 
-export const login = (formData, history) => async (dispatch) => {
+export const login = (formData) => async (dispatch) => {
   try {
     const res = await axios.post("/auth/login", formData, config);
     console.log(res.data);
@@ -44,7 +44,6 @@ export const login = (formData, history) => async (dispatch) => {
       payload: res.data.token,
     });
     dispatch(loadMe());
-    history.push("/dashboard");
   } catch (error) {
     console.log(error.response);
     dispatch({

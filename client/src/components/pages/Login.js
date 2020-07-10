@@ -16,7 +16,7 @@ const Login = ({ history, login }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     console.log(formData);
-    login(formData, history);
+    login(formData);
   };
 
   const { email, password } = formData;

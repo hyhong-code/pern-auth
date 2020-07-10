@@ -8,6 +8,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
+import PrivateRoute from "./routes/PrivateRoute";
+import PublicRoute from "./routes/PublicRoute";
 
 const App = ({ loadMe }) => {
   useEffect(() => {
@@ -27,10 +29,10 @@ const App = ({ loadMe }) => {
       <Navbar />
       <div className="container py-5">
         <Switch>
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} />
-          <Route exact path="/dashboard" component={Dashboard} />
+          <PublicRoute exact path="/" component={Landing} />
+          <PublicRoute exact path="/login" component={Login} />
+          <PublicRoute exact path="/signup" component={Signup} />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
         </Switch>
       </div>
     </BrowserRouter>
